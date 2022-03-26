@@ -1,3 +1,4 @@
+import { useState } from "react";
 import React from "react";
 
 const btns = [
@@ -74,11 +75,21 @@ const btns = [
     clsName: "no-ans",
   },
 ];
-export const Button = () => {
+export const Button = ({ click }) => {
+  // const [textToDisplay,setTextToDisplay] = useState('0.00');
+
   return (
-    <div class="items">
+    <div className="items">
       {btns.map((btn, i) => {
-        return <button className={btn.clsName}>{btn.level}</button>;
+        return (
+          <button
+            key={i}
+            className={btn.clsName}
+            onClick={() => click(btn.level)}
+          >
+            {btn.level}
+          </button>
+        );
       })}
 
       {/* <button class="clean">C</button>
